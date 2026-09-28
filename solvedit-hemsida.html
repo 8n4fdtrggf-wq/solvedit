@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Solvedit AB – Smarta arbetsplatser. Vi löser det.</title>
+<meta name="description" content="Solvedit AB skapar smarta arbetsplatser där design, teknik och funktion samverkar. Boka en gratis behovsanalys.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#0E1A2B;--blue:#123A6F;--blue-dark:#0B274D;--sky:#DCE7F5;--grey:#F3F5F8;--line:#DFE4EB;--muted:#55627A;--r:14px;--max:1120px}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:#fff;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid #2F6FDB;outline-offset:3px;border-radius:6px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+section{padding:72px 0}
+.alt{background:var(--grey)}
+header{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
+.logo{display:flex;align-items:center;font-weight:700;font-size:1.15rem;text-decoration:none}
+.logo img{height:30px;width:auto;display:block}
+.nav ul{display:none;list-style:none;gap:26px;padding:0}
+.nav ul a{text-decoration:none;color:var(--muted);font-size:.95rem;font-weight:500}
+.nav ul a:hover{color:var(--ink)}
+.btn{display:inline-block;padding:15px 26px;border-radius:10px;font-weight:600;font-size:1rem;text-decoration:none;transition:background .2s,transform .2s;border:2px solid transparent;cursor:pointer;font-family:inherit}
+.btn-primary{background:var(--blue);color:#fff}
+.btn-primary:hover{background:var(--blue-dark);transform:translateY(-1px)}
+.btn-sm{padding:10px 18px;font-size:.92rem}
+.btn-light{background:#fff;color:var(--blue-dark)}
+.btn-light:hover{background:var(--sky)}
+.hero{padding:56px 0 72px;background:var(--grey)}
+.grid2{display:grid;gap:44px;align-items:center}
+h1{font-size:clamp(2rem,6vw,3.5rem);line-height:1.1;letter-spacing:-.03em;font-weight:700;max-width:16em}
+h2{font-size:clamp(1.6rem,4vw,2.4rem);line-height:1.2;letter-spacing:-.02em;font-weight:700}
+.lead{margin:22px 0 32px;font-size:1.15rem;color:var(--muted);max-width:34em}
+.note{margin-top:14px;font-size:.9rem;color:var(--muted)}
+.room{position:relative;aspect-ratio:4/3.2;border-radius:20px;background:linear-gradient(180deg,#E9EEF5,#D5DEEA);overflow:hidden;border:1px solid var(--line)}
+.room .screen{position:absolute;left:14%;right:14%;top:14%;height:36%;background:var(--ink);border-radius:8px;border:6px solid #1C2B42}
+.room .screen::after{content:"";position:absolute;left:14%;top:26%;width:34%;height:8px;border-radius:4px;background:#2F6FDB;box-shadow:0 22px 0 #3C4F6C,0 44px 0 #3C4F6C}
+.room .table{position:absolute;left:8%;right:8%;bottom:14%;height:20%;background:#fff;border-radius:60px/40px;box-shadow:0 14px 0 #B9C6D8}
+.room .chair{position:absolute;bottom:12%;width:10%;aspect-ratio:1;background:var(--blue);border-radius:50% 50% 10px 10px}
+.c1{left:18%}.c2{left:45%}.c3{right:18%}
+.room small{position:absolute;right:12px;bottom:10px;font-size:.72rem;color:var(--muted)}
+.head{max-width:40em;margin-bottom:44px}
+.head p{margin-top:14px;color:var(--muted);font-size:1.05rem}
+.cards{display:grid;gap:20px}
+.card{display:flex;flex-direction:column;padding:32px;border:1px solid var(--line);border-radius:var(--r);background:#fff;text-decoration:none;transition:border-color .2s,box-shadow .2s,transform .2s}
+.card:hover,.card:focus-visible{border-color:var(--blue);box-shadow:0 12px 32px rgba(18,58,111,.12);transform:translateY(-3px)}
+.icon{width:52px;height:52px;border-radius:12px;background:var(--sky);color:var(--blue);display:grid;place-items:center;margin-bottom:22px}
+.icon svg{width:26px;height:26px}
+.card h3{font-size:1.3rem;letter-spacing:-.01em}
+.tag{font-size:.85rem;color:var(--muted);margin-top:2px}
+.card p{margin:14px 0 24px;color:var(--muted);flex:1}
+.more{font-weight:600;color:var(--blue)}
+.card:hover .more,.link:hover{text-decoration:underline}
+.link{font-weight:600;color:var(--blue);text-decoration:none}
+/* service detail */
+.detail h2{margin-bottom:8px}
+.detail .sub{font-weight:600;color:var(--blue);margin-bottom:16px}
+.detail p{color:var(--muted);margin-bottom:14px;max-width:36em}
+.detail .quote{color:var(--ink);font-weight:500}
+.detail .link{display:inline-block;margin-top:10px}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.tile{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px}
+.tile .ph{aspect-ratio:4/3;border-radius:8px;background:linear-gradient(135deg,var(--sky),#EEF3FA);display:grid;place-items:center;color:var(--blue);margin-bottom:12px}
+.tile .ph svg{width:34px;height:34px;opacity:.7}
+.tile b{display:block;font-size:.95rem}
+.tile span{font-size:.85rem;color:var(--muted)}
+.checks{list-style:none;padding:0;display:grid;gap:14px;margin:6px 0 4px}
+.checks li{padding:18px 20px;background:#fff;border:1px solid var(--line);border-radius:12px;border-left:4px solid var(--blue)}
+.checks b{display:block}
+.checks span{color:var(--muted);font-size:.95rem}
+/* why */
+.values{list-style:none;padding:0;display:grid;gap:18px;margin-top:28px}
+.values li{padding-left:18px;border-left:3px solid var(--blue)}
+.values strong{display:block;font-size:1.05rem}
+.values span{color:var(--muted)}
+.method{background:#fff;border:1px solid var(--line);border-radius:20px;padding:32px}
+.method h3{font-size:1.15rem;margin-bottom:6px}
+.method>p{color:var(--muted);margin-bottom:24px}
+.steps{list-style:none;padding:0}
+.steps li{position:relative;padding:0 0 26px 40px}
+.steps li:last-child{padding-bottom:0}
+.steps li::before{content:"";position:absolute;left:8px;top:22px;bottom:-2px;width:2px;background:var(--line)}
+.steps li:last-child::before{display:none}
+.steps li::after{content:"";position:absolute;left:0;top:5px;width:18px;height:18px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 5px var(--sky)}
+.steps b{display:block}
+.steps span{color:var(--muted);font-size:.95rem}
+.logos{margin-top:56px;padding-top:32px;border-top:1px solid var(--line)}
+.logos p{color:var(--muted);font-size:.9rem;margin-bottom:16px}
+.logo-row{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.logo-row div{height:56px;border:1px dashed #B7C2D3;border-radius:10px;display:grid;place-items:center;font-size:.8rem;color:#8593A8;background:#fff}
+/* about */
+.person{display:flex;gap:20px;align-items:center;margin-top:24px}
+.avatar{width:96px;height:96px;flex:none;border-radius:50%;object-fit:cover;background:var(--sky)}
+.person b{display:block;font-size:1.1rem}
+.person span{color:var(--muted);font-size:.95rem}
+.person a{color:var(--blue);font-weight:500;text-decoration:none;display:block}
+/* CTA */
+.cta{background:var(--blue-dark);color:#fff;text-align:center}
+.cta h2{max-width:18em;margin:0 auto}
+.cta p{margin:16px auto 32px;color:#BFD0E8;max-width:34em}
+/* contact */
+form{display:grid;gap:16px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:28px}
+.row{display:grid;gap:16px}
+label{display:block;font-weight:500;font-size:.92rem;margin-bottom:6px}
+input,textarea{width:100%;padding:13px 14px;border:1px solid #C3CCD9;border-radius:10px;font:inherit;color:var(--ink);background:#fff}
+input:focus,textarea:focus{outline:3px solid #2F6FDB;outline-offset:1px;border-color:var(--blue)}
+textarea{min-height:120px;resize:vertical}
+.hint{font-size:.85rem;color:var(--muted)}
+#msg{font-size:.95rem;color:var(--blue);font-weight:500;min-height:1.4em}
+.info{display:grid;gap:22px;align-content:start}
+.info h3{font-size:.95rem;margin-bottom:4px}
+.info p,.info a{color:var(--muted);text-decoration:none}
+.info a:hover{color:var(--blue);text-decoration:underline}
+footer{padding:56px 0 32px;background:#fff;border-top:1px solid var(--line)}
+.foot{display:grid;gap:36px}
+footer h4{font-size:.95rem;margin-bottom:12px}
+footer ul{list-style:none;padding:0;display:grid;gap:8px}
+footer a{color:var(--muted);text-decoration:none;font-size:.95rem}
+footer a:hover{color:var(--blue);text-decoration:underline}
+.foot p{color:var(--muted);font-size:.95rem;max-width:24em;margin-top:12px}
+.copy{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
+@media(min-width:768px){
+  section{padding:104px 0}
+  .nav ul{display:flex}
+  .hero{padding:88px 0 104px}
+  .grid2{grid-template-columns:1fr 1fr;gap:64px}
+  .hero .grid2{grid-template-columns:1.1fr 1fr}
+  .flip>:first-child{order:2}
+  .cards{grid-template-columns:repeat(3,1fr)}
+  .logo-row{grid-template-columns:repeat(4,1fr)}
+  .row{grid-template-columns:1fr 1fr}
+  .foot{grid-template-columns:1.4fr 1fr 1fr}
+  .grid2.top{align-items:start}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top" aria-label="Solvedit AB, till startsidan"><img src="https://solvedit.se/wp-content/uploads/2023/01/logo-black-AB_black.png" alt="Solvedit AB"></a>
+    <ul>
+      <li><a href="#tjanster">Tjänster</a></li>
+      <li><a href="#varfor">Varför Solvedit</a></li>
+      <li><a href="#om-oss">Om oss</a></li>
+      <li><a href="#kontakt">Kontakt</a></li>
+    </ul>
+    <a class="btn btn-primary btn-sm" href="#kontakt">Boka behovsanalys</a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap grid2">
+      <div>
+        <h1>Saknar ditt mötesrum kreativitet, energi och glädje?</h1>
+        <p class="lead">Vi löser det. Solvedit AB skapar smarta arbetsplatser där design, teknik och funktion samverkar.</p>
+        <a class="btn btn-primary" href="#kontakt">Boka en gratis behovsanalys</a>
+        <p class="note">Utan förpliktelser. Vi börjar med att lyssna.</p>
+      </div>
+      <div class="room" role="img" aria-label="Illustration: modernt mötesrum med skärm och konferensbord">
+        <div class="screen"></div><div class="table"></div><div class="chair c1"></div><div class="chair c2"></div><div class="chair c3"></div>
+        <small>Byt mot foto på mötesrum</small>
+      </div>
+    </div>
+  </section>
+
+  <section id="tjanster">
+    <div class="wrap">
+      <div class="head">
+        <h2>Tre områden. En helhet som fungerar.</h2>
+        <p>Vi tar oss an hela arbetsplatsen, från mötesrummet till skrivaren och hemmakontoret.</p>
+      </div>
+      <div class="cards">
+        <a class="card" href="#motesrum">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></div>
+          <h3>Mötesrum</h3><div class="tag">Flow</div>
+          <p>Design möter funktion. Skärmar, BYOD-stöd och Red Dot-belönad utrustning för tydliga och effektiva möten.</p>
+          <span class="more">Läs mer</span>
+        </a>
+        <a class="card" href="#print">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 9V3h10v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M7 14h10v7H7z"/></svg></div>
+          <h3>Smart Print &amp; Dokumenthantering</h3><div class="tag">Molnbaserat, utan servrar</div>
+          <p>Säkra utskrifter och automatiserade dokumentflöden som minskar administrationen.</p>
+          <span class="more">Läs mer</span>
+        </a>
+        <a class="card" href="#arbetsplats">
+          <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="5" width="14" height="10" rx="2"/><path d="M6 19h6M9 15v4"/><rect x="18" y="8" width="4" height="9" rx="1"/></svg></div>
+          <h3>Digital arbetsplats</h3><div class="tag">Hemma, på kontoret, i mötesrummet</div>
+          <p>Workplace-produkter för professionellt och fokuserat arbete, oavsett var det utförs.</p>
+          <span class="more">Läs mer</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt detail" id="motesrum">
+    <div class="wrap grid2">
+      <div>
+        <h2>Mötesrum</h2>
+        <p class="sub">Flow – där design möter funktion.</p>
+        <p>Vi skapar möteslösningar där design, funktion och teknik samverkar. Med skärmar, BYOD-stöd och Red Dot-belönad utrustning får vi samarbetet att flöda, med fokus på tydlighet, estetik och effektiva möten.</p>
+        <p class="quote">Ett möte med Solvedit ska inte bara fungera, det ska kännas rätt hela tiden.</p>
+        <a class="link" href="#kontakt">Boka en behovsanalys så hittar vi lösningen tillsammans.</a>
+      </div>
+      <div class="tiles">
+        <div class="tile"><div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></div><b>Skärmar</b><span>Tydlig bild i alla rum</span></div>
+        <div class="tile"><div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></div><b>Nearity C30R</b><span>Mikrofon, högtalare och kamera med AI-styrda videolägen</span></div>
+        <div class="tile"><div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg></div><b>BYOD-stöd</b><span>Anslut med egen enhet</span></div>
+        <div class="tile"><div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="9" r="5"/><path d="M8.5 13.5L7 21l5-3 5 3-1.5-7.5"/></svg></div><b>Red Dot-belönad</b><span>Utrustning med design i fokus</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="detail" id="print">
+    <div class="wrap grid2 flip">
+      <div>
+        <h2>Smart Print &amp; Dokumenthantering</h2>
+        <p class="sub">Säkra utskrifter och effektiva arbetsflöden.</p>
+        <p>Vi hjälper er hantera utskrifter och dokument digitalt och molnbaserat, utan servrar. Enkel administration, trygga utskrifter och automatiserade dokumentflöden.</p>
+        <a class="link" href="#kontakt">Minska administrationen – prata med oss om rätt lösning.</a>
+      </div>
+      <ul class="checks">
+        <li><b>Säkra utskrifter</b><span>Trygg hantering av era dokument.</span></li>
+        <li><b>Molnbaserat, utan servrar</b><span>Inga egna servrar att driva och underhålla.</span></li>
+        <li><b>Automatiserade dokumentflöden</b><span>Mindre manuell administration i vardagen.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="alt detail" id="arbetsplats">
+    <div class="wrap grid2">
+      <div>
+        <h2>Digital arbetsplats</h2>
+        <p class="sub">Din arbetsplats där du kan agera professionellt.</p>
+        <p>Vi levererar workplace-produkter som skapar förutsättningar för ett fokuserat och professionellt arbete, oavsett om du befinner dig hemma, på kontoret eller i mötesrummet.</p>
+        <a class="link" href="#kontakt">Låt oss visa hur enkelt det kan vara.</a>
+      </div>
+      <div class="tiles">
+        <div class="tile"><div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="10" r="6"/><circle cx="12" cy="10" r="2"/><path d="M9 21h6M12 16v5"/></svg></div><b>Nearity CC200</b><span>4K-webbkamera med AI-driven ljudbehandling</span></div>
+        <div class="tile"><div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 15v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="14" width="4" height="6" rx="1"/><rect x="17" y="14" width="4" height="6" rx="1"/></svg></div><b>Trådlöst headset</b><span>Brusreducering och lång batteritid</span></div>
+        <div class="tile"><div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></div><b>XLR-mikrofon</b><span>Klart och balanserat ljud</span></div>
+        <div class="tile"><div class="ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 4h10v16H7z"/><path d="M11 17h2"/></svg></div><b>SenseOne no: 5</b><span>Samtal eller diktering överallt</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="varfor">
+    <div class="wrap">
+      <div class="grid2 top">
+        <div>
+          <h2>Därför blir det rätt från början</h2>
+          <p class="lead" style="margin-bottom:0">Solvedit AB står för "löste det", och just så vill vi tolkas. Det förtroendet förvaltar vi med stor respekt.</p>
+          <ul class="values">
+            <li><strong>Engagemang</strong><span>Vi ser oss som en del av ert team, inte som en leverantör.</span></li>
+            <li><strong>Kunskap</strong><span>Vi kan tekniken och vet hur människor faktiskt arbetar.</span></li>
+            <li><strong>Noggrannhet</strong><span>Detaljerna avgör om en lösning håller i vardagen.</span></li>
+          </ul>
+        </div>
+        <div class="method">
+          <h3>Behovsanalys i tre perspektiv</h3>
+          <p>Vi bygger analysen på hela bilden, inte bara på dagens läge.</p>
+          <ol class="steps">
+            <li><b>Historik</b><span>Vad ni har gjort, köpt och lärt er hittills.</span></li>
+            <li><b>Nuläge</b><span>Hur arbetsplatsen fungerar i dag.</span></li>
+            <li><b>Framtid</b><span>Hur ni vill arbeta imorgon, och vad som krävs.</span></li>
+          </ol>
+        </div>
+      </div>
+      <div class="logos">
+        <p>Företag som litar på oss</p>
+        <div class="logo-row"><div>Kundlogotyp</div><div>Kundlogotyp</div><div>Partnerlogotyp</div><div>Partnerlogotyp</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt" id="om-oss">
+    <div class="wrap grid2">
+      <div>
+        <h2>En kontaktväg för all arbetsplatsteknik</h2>
+        <p class="lead" style="margin-bottom:0">Solvedit AB är er "Single Point Of Contact" för IT-tekniska tjänster, från mötesteknik till dokumentflöden. Ni behöver bara prata med en person.</p>
+        <div class="person">
+          <img class="avatar" src="https://solvedit.se/wp-content/uploads/2023/01/fredrich02_brighter_w600px.png" alt="Fredrich Blixt">
+          <div><b>Fredrich Blixt</b><span>Er kontaktperson</span><a href="mailto:fredrich.blixt@solvedit.se">fredrich.blixt@solvedit.se</a></div>
+        </div>
+      </div>
+      <ul class="checks">
+        <li><b>Rätt tekniklösning</b><span>Anpassad efter er verksamhet och era behov.</span></li>
+        <li><b>Från analys till drift</b><span>Vi följer med hela vägen.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <h2>Redo att transformera er arbetsplats?</h2>
+      <p>Berätta var ni står i dag. Vi tar fram en behovsanalys som visar vägen framåt.</p>
+      <a class="btn btn-light" href="#kontakt">Kontakta oss idag</a>
+    </div>
+  </section>
+
+  <section id="kontakt">
+    <div class="wrap grid2 top">
+      <div class="info">
+        <div>
+          <h2>Kontakta oss</h2>
+          <p class="lead" style="margin-bottom:0">Vi hjälper er att hitta rätt tekniklösning för er verksamhet. Fyll i formuläret så hör vi av oss.</p>
+        </div>
+        <div><h3>Fredrich Blixt</h3><a href="mailto:fredrich.blixt@solvedit.se">fredrich.blixt@solvedit.se</a></div>
+        <div><h3>Adress</h3><p>Södra Långebergsgatan 20<br>436 32 Askim</p></div>
+        <div><h3>Organisationsnummer</h3><p>559387-4497</p></div>
+      </div>
+      <form id="f" novalidate>
+        <div class="row">
+          <div><label for="fn">Förnamn</label><input id="fn" name="fn" autocomplete="given-name"></div>
+          <div><label for="ln">Efternamn</label><input id="ln" name="ln" autocomplete="family-name"></div>
+        </div>
+        <div class="row">
+          <div><label for="em">E-post (obligatoriskt)</label><input id="em" name="em" type="email" required autocomplete="email"></div>
+          <div><label for="tel">Telefon</label><input id="tel" name="tel" type="tel" autocomplete="tel"></div>
+        </div>
+        <div><label for="ms">Berätta kort om era behov</label><textarea id="ms" name="ms" maxlength="180"></textarea><span class="hint">Högst 180 tecken.</span></div>
+        <button class="btn btn-primary" type="submit">Skicka och boka behovsanalys</button>
+        <div id="msg" role="status"></div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="logo" href="#top" aria-label="Solvedit AB"><img src="https://solvedit.se/wp-content/uploads/2023/01/logo-black-AB_black.png" alt="Solvedit AB"></a>
+        <p>Löste det. Genom engagemang, kunskap och noggrannhet.</p>
+      </div>
+      <div>
+        <h4>Tjänster</h4>
+        <ul><li><a href="#motesrum">Mötesrum</a></li><li><a href="#print">Smart Print &amp; Dokumenthantering</a></li><li><a href="#arbetsplats">Digital arbetsplats</a></li></ul>
+      </div>
+      <div>
+        <h4>Kontakt</h4>
+        <ul><li><a href="mailto:fredrich.blixt@solvedit.se">fredrich.blixt@solvedit.se</a></li><li>Södra Långebergsgatan 20</li><li>436 32 Askim</li></ul>
+      </div>
+    </div>
+    <div class="copy">© 2026 Solvedit AB, 559387-4497. Alla rättigheter förbehållna.</div>
+  </div>
+</footer>
+
+<script>
+/* Demo: öppnar mejlklienten. Byt mot riktigt formulär-API vid lansering. */
+document.getElementById('f').addEventListener('submit',function(e){
+  e.preventDefault();
+  var f=e.target,m=document.getElementById('msg'),em=f.em.value.trim();
+  if(!/^\S+@\S+\.\S+$/.test(em)){m.textContent='Ange en giltig e-postadress så kan vi svara er.';f.em.focus();return}
+  var body='Namn: '+f.fn.value+' '+f.ln.value+'\nE-post: '+em+'\nTelefon: '+f.tel.value+'\n\n'+f.ms.value;
+  window.location.href='mailto:fredrich.blixt@solvedit.se?subject='+encodeURIComponent('Behovsanalys via webben')+'&body='+encodeURIComponent(body);
+  m.textContent='Tack! Din mejlklient öppnas så att du kan skicka förfrågan.';
+});
+</script>
+</body>
+</html>
